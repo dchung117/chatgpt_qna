@@ -37,3 +37,45 @@ def start():
     await msg.update()
 
     cl.user_session.set("chain", chain)
+
+@cl.on_message
+async def main(msg):
+    chain = cl.user_session.get("chain")
+    callback = cl.AsyncLangchainCallbackHandler(
+        stream_final_answer=True,
+        answer_prefix_tokens=["FINAL", "ANSWER"]
+    )
+    callback.answer_reached=True
+
+    response = await chain.acall(msg, callbacks=[callback])
+    answer = response["answer"]
+    sources = response["sources"].strip()
+    source_elements = []
+
+    docs = cl.user_session.get("docs")
+    metadata = [doc.metadata for doc in docs]
+    all_sources = [m["source"] for m in metadata]
+
+    if sources:
+        found_sources = []
+        for s in sources.split(","):
+            s_name = s.strip().replace(".", "")
+            if s_name in all_sources:
+                s_idx = all_sources.index(s_name)
+                text = docs[s_idx].page_content
+                found_sources.append(s_name)
+                source_elements.append(cl.Text(
+                    content=text,
+                    name=s_name
+                ))
+
+        if found_sources:
+            answer += f"\nSources: {', '.join(found_sources)}"
+        else:
+            answer += f"\nNo sources found."
+
+    if callback.has_streamed_final_answer:
+        callback.final_stream.elements = source_elements
+        await callback.final_stream.update()
+    else:
+        await cl.Message(content=answer, elements=source_elements).send()
