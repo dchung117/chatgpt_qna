@@ -12,6 +12,7 @@ bidict==0.22.1
 certifi==2023.7.22
 chainlit==0.7.2
 charset-normalizer==3.3.0
+-e git+https://github.com/dchung117/chatgpt_qna.git@f967e37e1e38b3546b05c065c62e2c45e516a72f#egg=chatgpt_qna
 chroma-hnswlib==0.7.3
 chromadb==0.4.14
 click==8.1.7
@@ -53,6 +54,7 @@ nest-asyncio==1.5.8
 nodeenv==1.8.0
 numpy==1.26.1
 onnxruntime==1.16.1
+openai==0.28.1
 opentelemetry-api==1.20.0
 opentelemetry-exporter-otlp==1.20.0
 opentelemetry-exporter-otlp-proto-common==1.20.0
@@ -71,6 +73,7 @@ pulsar-client==3.3.0
 pydantic==2.4.2
 pydantic_core==2.10.1
 PyJWT==2.8.0
+pypdf==3.16.4
 PyPika==0.48.9
 python-dateutil==2.8.2
 python-dotenv==1.0.0
