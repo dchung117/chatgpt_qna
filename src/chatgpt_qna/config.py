@@ -1,2 +1,13 @@
+# RecursiveTextSplitter
 CHUNK_SIZE=1000
 CHUNK_OVERLAP=100
+
+# AskFileMessage
+MAX_SIZE_MB=20
+TIMEOUT_SECS=180
+
+# ChatOpenAI
+TEMPERATURE=0
+
+# Retriever
+MAX_TOKENS_LIMIT=4097
