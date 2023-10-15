@@ -74,6 +74,7 @@ async def main(msg):
         else:
             answer += f"\nNo sources found."
 
+    # source_elements -> links to document excerpt where information was drawn from in pdf
     if callback.has_streamed_final_answer:
         callback.final_stream.elements = source_elements
         await callback.final_stream.update()
