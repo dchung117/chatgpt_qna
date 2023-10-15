@@ -12,7 +12,7 @@ bidict==0.22.1
 certifi==2023.7.22
 chainlit==0.7.2
 charset-normalizer==3.3.0
--e git+https://github.com/dchung117/chatgpt_qna.git@f967e37e1e38b3546b05c065c62e2c45e516a72f#egg=chatgpt_qna
+-e git+https://github.com/dchung117/chatgpt_qna.git@22ccd4eaa8057450c43d1af94f21702dace6ebd9#egg=chatgpt_qna
 chroma-hnswlib==0.7.3
 chromadb==0.4.14
 click==8.1.7
@@ -82,6 +82,7 @@ python-graphql-client==0.4.3
 python-multipart==0.0.6
 python-socketio==5.9.0
 PyYAML==6.0.1
+regex==2023.10.3
 requests==2.31.0
 simple-websocket==1.0.0
 six==1.16.0
@@ -91,6 +92,7 @@ starlette==0.27.0
 sympy==1.12
 syncer==2.0.3
 tenacity==8.2.3
+tiktoken==0.5.1
 tokenizers==0.14.1
 tomli==2.0.1
 tomlkit==0.12.1
